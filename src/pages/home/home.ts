@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Fav } from '../../components/fav/fav';
 
 @Component({
   selector: 'page-home',

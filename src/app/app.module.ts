@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 //Se importa el login y se agrega a los NgModule en declarations y en entryComponents
 import { LoginPage } from '../pages/login/login';
 import { ShowNotificationPage } from '../pages/notification/showNotification';
+import { Fav } from '../components/fav/fav';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ var links = [
     HomePage,
     TabsPage,
     LoginPage,
-    ShowNotificationPage
+    ShowNotificationPage,
+    Fav
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ var links = [
     HomePage,
     TabsPage,
     LoginPage,
-    ShowNotificationPage  
+    ShowNotificationPage,
+    Fav
   ],
   providers: [
     StatusBar,
