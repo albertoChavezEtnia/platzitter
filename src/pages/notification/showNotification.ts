@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
-import { Notifications } from '../../commons/notifications';
+//import { Notifications } from '../../commons/notifications';
 
 @Component({
 	selector: 'show-notification',
@@ -28,6 +28,7 @@ export class ShowNotificationPage{
 	//notification:Notifications;
 	notification:{};
 	constructor(private navParams:NavParams){
+		console.log(navParams);
 		this.notification = navParams.get('id');
 	}
 }
