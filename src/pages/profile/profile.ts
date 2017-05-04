@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { Notifications } from '../../commons/notifications';
+import { twitt } from '../../commons/twitt';
+import { Profile } from '../../commons/profile';
+
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
 
-  me:Me = {
+  me:Profile = {
     "img":'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg',
      nick_name:'@jorgeucano',
     "interactions":1,
@@ -41,15 +46,10 @@ export class ProfilePage {
 
 }
 
-interface Me{
-  img:string;
-  nick_name:string;
-  interactions:number;
-  github:string;
-  twitter:string;
-  medium:string;
-  bio:string;
-}
+
+
+/*
+//Deprecated, fueron exportadas a commons
 
 interface twitt{
   img:string;
@@ -63,3 +63,4 @@ interface Notifications{
   text:string;
   action:string;
 }
+*/

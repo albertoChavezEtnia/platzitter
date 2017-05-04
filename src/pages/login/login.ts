@@ -32,7 +32,7 @@ import { AlertController, LoadingController } from 'ionic-angular';
 export class LoginPage{
 	user = {"email":"","password":""};
 	constructor(
-		private alertCtrl:AlertController,
+		private alertCtrl: AlertController,
 	 	public  loadingCtrl: LoadingController
  	){
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { Notifications } from '../../commons/notifications';
+
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html'
@@ -19,9 +21,13 @@ export class NotificationPage {
 
 }
 
+/*
+//Deprecated, fueron exportadas a commons
+
 interface Notifications{
   img:string;
   nick_name:string;
   text:string;
   action:string;
 }
+*/
