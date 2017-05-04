@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Notifications } from '../../commons/notifications';
+import { ShowNotificationPage } from './showNotification';
+
 
 @Component({
   selector: 'page-notification',
@@ -17,6 +19,12 @@ export class NotificationPage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  showNotification(_notification:Notifications){
+    this.navCtrl.push(ShowNotificationPage, {
+      id:_notification
+    });
   }
 
 }

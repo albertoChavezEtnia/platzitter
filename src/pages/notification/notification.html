@@ -15,7 +15,7 @@
 	    </ion-thumbnail>
 	    <h2>{{item.nick_name}}</h2>
 	    <p>{{item.text}}</p>
-	    <button ion-button clear item-right>View</button>
+	    <button (tap)="showNotification(item)" ion-button clear item-right>View</button>
 	  </ion-item>
 	</ion-list>
 
