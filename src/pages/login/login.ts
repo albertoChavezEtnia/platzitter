@@ -18,9 +18,9 @@ Un CSS (en este caso scss)
 //Es por eso que importamos 'Component' , que viene de @angular/core
 import { Component } from '@angular/core';
 //Cada uno de los componentes tendran Notation parecidas
-
+import { TabsPage } from '../tabs/tabs';
 //Importamos 2 componentes nuevos o 2 funcionalidades nuevas, una alerta y un loading que ya pertenece a ionic
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
 
 //Notation importada
 //El selector es el nombre con el cual el componente será llamado en el html
@@ -31,9 +31,11 @@ import { AlertController, LoadingController } from 'ionic-angular';
 
 export class LoginPage{
 	user = {"email":"","password":""};
+	//constructor va a generar todo lo necesario
 	constructor(
 		private alertCtrl: AlertController,
-	 	public  loadingCtrl: LoadingController
+	 	public  loadingCtrl: LoadingController,
+	 	public	navCtrl: NavController
  	){
 
  	}
@@ -53,12 +55,16 @@ export class LoginPage{
  			loading.present();
  			setTimeout(()=>{
  				loading.dismiss();
+ 				/*
  				let alert = this.alertCtrl.create({
 	 				title:'Login',
 	 				subTitle:'Login correcto',
 	 				buttons:['Aceptar'] 					
  				});
  				alert.present();
+ 				*/
+ 				this.navCtrl.push(TabsPage);
+
  			}, 5000);
 
  		}else{
