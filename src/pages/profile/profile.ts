@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Notifications } from '../../commons/notifications';
-import { twitt } from '../../commons/twitt';
+import { Twitt } from '../../commons/twitt';
 import { Profile } from '../../commons/profile';
 
 
@@ -23,7 +23,7 @@ export class ProfilePage {
   };
 
 
-  listado:Array<twitt> = [
+  listado:Array<Twitt> = [
     {img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'},
     {img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'},
     {img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'},

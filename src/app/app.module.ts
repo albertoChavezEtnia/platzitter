@@ -30,7 +30,7 @@ export const CONFIG = {
    projectId: "platzitter-70b91",
    storageBucket: "platzitter-70b91.appspot.com",
    messagingSenderId: "639016230348"  
-}
+};
 
 //Refactor por router
 //links sera un array de objetos minimos para linkear la aplicación en base a un evento
@@ -58,8 +58,8 @@ var links = [
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(CONFIG),
     IonicModule.forRoot(MyApp, links),
-    AngularFireModule.initializeApp(CONFIG)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
