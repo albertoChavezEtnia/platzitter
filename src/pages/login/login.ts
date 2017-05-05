@@ -22,6 +22,8 @@ import { TabsPage } from '../tabs/tabs';
 //Importamos 2 componentes nuevos o 2 funcionalidades nuevas, una alerta y un loading que ya pertenece a ionic
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
 
+import { UserService } from '../../services/user.service';
+
 //Notation importada
 //El selector es el nombre con el cual el componente será llamado en el html
 @Component({
@@ -33,12 +35,12 @@ export class LoginPage{
 	user = {"email":"","password":""};
 	//constructor va a generar todo lo necesario
 	constructor(
-		private alertCtrl: AlertController,
-	 	public  loadingCtrl: LoadingController,
-	 	public	navCtrl: NavController
- 	){
+		private 	alertCtrl: AlertController,
+	 	public  	loadingCtrl: LoadingController,
+	 	public	navCtrl: NavController,
+	 	private 	userService: UserService 
+ 	){}
 
- 	}
  	//Propio de angular
  	ngOnInit(){
  		console.log('Arrancó el init');
@@ -46,42 +48,54 @@ export class LoginPage{
 
  	login = ():void=>{
 
-		let loading = this.loadingCtrl.create({
-			content:'Please wait...'
-		});
+		if(this.user.email != '' && this.user.password != ''){
 
- 		if(this.user.email != '' && this.user.password != ''){
+			let usuarios;
 
+			let loading = this.loadingCtrl.create({
+				content:'Please wait...'
+			});
  			loading.present();
+
+ 			let login:false;
+ 			this.userService
+ 				.loginUsers(this.user.email, this.user.password)
+ 				.then(
+ 					(response)=>{
+ 						loading.dismiss();
+ 						if (response!==undefined) { //Quiere decir que encontramos al usuario
+ 							this.navCtrl.push(TabsPage);
+ 						}else{
+							let alert = this.alertCtrl.create({
+								title:'Login',
+								subTitle:'Usuario y/o contraseña invalido',
+								buttons:['Aceptar'] 					
+							});
+							alert.present();
+ 						}
+ 					}
+				)
+ 			/*
  			setTimeout(()=>{
  				loading.dismiss();
- 				/*
+ 				
  				let alert = this.alertCtrl.create({
 	 				title:'Login',
 	 				subTitle:'Login correcto',
 	 				buttons:['Aceptar'] 					
  				});
  				alert.present();
- 				*/
- 				this.navCtrl.push(TabsPage);
-
- 			}, 5000);
-
+ 				
+ 				this.navCtrl.push(TabsPage);}, 5000);
+ 			*/
  		}else{
-
-			loading.dismiss();
+			//loading.dismiss();
 			let alert = this.alertCtrl.create({
 				title:'Login',
 				subTitle:'Login incorrecto',
 				buttons:['Aceptar'] 					
 			});
 			alert.present(); 			
-
  		}
-
-
  	}
-
-
-
 }
