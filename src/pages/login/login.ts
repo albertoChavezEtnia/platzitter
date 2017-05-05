@@ -23,6 +23,7 @@ import { TabsPage } from '../tabs/tabs';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
 
 import { UserService } from '../../services/user.service';
+import { DBService } from '../../services/db.service';
 
 //Notation importada
 //El selector es el nombre con el cual el componente será llamado en el html
@@ -38,8 +39,13 @@ export class LoginPage{
 		private 	alertCtrl: AlertController,
 	 	public  	loadingCtrl: LoadingController,
 	 	public	navCtrl: NavController,
-	 	private 	userService: UserService 
- 	){}
+	 	private 	userService: UserService, 
+	 	private 	DBService: DBService,
+ 	){
+		DBService.openDatabase();
+		DBService.createTable();
+		console.dir(DBService.getAll());
+ 	}
 
  	//Propio de angular
  	ngOnInit(){

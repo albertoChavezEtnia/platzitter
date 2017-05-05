@@ -16,7 +16,8 @@ import { ShowNotificationPage } from '../pages/notification/showNotification';
 import { Fav } from '../components/fav/fav';
 
 import { UserService } from '../services/user.service';
-
+import { DBService } from '../services/db.service';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -78,7 +79,7 @@ var links = [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService, DBService, SQLite
   ]
 })
 export class AppModule {}
