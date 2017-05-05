@@ -20,6 +20,17 @@ import { UserService } from '../services/user.service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+//Importamos libreria de firebase para angular 2
+import { AngularFireModule } from 'angularfire2';
+
+export const CONFIG = {
+   apiKey: "AIzaSyCzD3oNx90M1F_Isg19GzQwfXtWGXYVyDo",
+   authDomain: "platzitter-70b91.firebaseapp.com",
+   databaseURL: "https://platzitter-70b91.firebaseio.com",
+   projectId: "platzitter-70b91",
+   storageBucket: "platzitter-70b91.appspot.com",
+   messagingSenderId: "639016230348"  
+}
 
 //Refactor por router
 //links sera un array de objetos minimos para linkear la aplicación en base a un evento
@@ -47,7 +58,8 @@ var links = [
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, links)
+    IonicModule.forRoot(MyApp, links),
+    AngularFireModule.initializeApp(CONFIG)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
