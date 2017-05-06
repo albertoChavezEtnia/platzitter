@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 //import { Twitt } from '../../commons/twitt';
 //import { Fav } from '../../components/fav/fav';
+import { UserService } from '../../services/user.service';
 
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'page-home',
@@ -35,6 +36,7 @@ export class HomePage {
 
   	constructor(
   		public navCtrl: NavController,
+  		private userService: UserService,
   		public database: AngularFireDatabase,
   	){
   		this.listado = this.database.list('/twitts');

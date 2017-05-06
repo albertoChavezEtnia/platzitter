@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+//import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
+import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
 
 @Injectable()
 
 export class DBService {
-	db: SQLite = null;
+	//db: SQLite = null;
+	db = null;
 
 	constructor () {
 		this.db = new SQLite();
@@ -56,5 +58,15 @@ export class DBService {
 			user.password
 		]);
 	}
+
+ 	update(user: any){
+		let sql = 'UPDATE users SET nick_name=?, full_name=?, email=?, password=? WHERE id=?';
+		return this.db.executeSql(sql, [user.nick_name, user.full_name, user.email, user.password, user.id]);
+   }
+
+   delete(user: any){
+		let sql = 'DELETE FROM users WHERE id=?';
+		return this.db.executeSql(sql, [user.id]);
+   }
 
 }

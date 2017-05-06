@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
 import { TabsPage } from '../tabs/tabs';
 //Importamos 2 componentes nuevos o 2 funcionalidades nuevas, una alerta y un loading que ya pertenece a ionic
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
-
+import { SignInPage } from './signin';
 import { UserService } from '../../services/user.service';
 import { DBService } from '../../services/db.service';
 
@@ -58,16 +58,26 @@ export class LoginPage{
 
 			let usuarios;
 
+         /*
+         this.userService.getUser().then(
+             function(users){
+                 usuarios = users;
+                 console.log(usuarios);
+             }
+         );
+         */
+
 			let loading = this.loadingCtrl.create({
 				content:'Please wait...'
 			});
  			loading.present();
 
- 			let login:false;
+ 			let login = false;
  			this.userService
  				.loginUsers(this.user.email, this.user.password)
  				.then(
  					(response)=>{
+ 						console.log(response);
  						loading.dismiss();
  						if (response!==undefined) { //Quiere decir que encontramos al usuario
  							this.navCtrl.push(TabsPage);
@@ -98,10 +108,16 @@ export class LoginPage{
 			//loading.dismiss();
 			let alert = this.alertCtrl.create({
 				title:'Login',
-				subTitle:'Login incorrecto',
+				subTitle:'Debe completar el usuario y contraseña.',
 				buttons:['Aceptar'] 					
 			});
 			alert.present(); 			
  		}
  	}
+
+ 	signIn = ():void=>{
+ 		//alert('signIn');
+ 		this.navCtrl.push(SignInPage);
+ 	}
+
 }

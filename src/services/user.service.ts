@@ -12,7 +12,7 @@ export class UserService{
 	}
 
 	getUsers(): Promise<User[]>{
-		console.log();
+		console.log('Entré al promise');
 		return Promise.resolve(USERS);
 	}
 
@@ -25,7 +25,7 @@ export class UserService{
 
 	find(email, password): User{
 		let user:User;
-		user = USERS.find(x => x.email == email);
+		user = USERS.find(x => x.email === email);
 		if (user !== undefined && user.password == password) {
 			return user;
 		}else{
