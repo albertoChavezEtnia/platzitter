@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 //import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
-import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
+import { SQLite } from 'ionic-native'; //,SQLiteObject 
 
 @Injectable()
 
@@ -9,9 +9,11 @@ export class DBService {
 	//db: SQLite = null;
 	db = null;
 
-	constructor () {
-		this.db = new SQLite();
-	}
+  constructor() {
+    this.db = new SQLite();
+    this.openDatabase();
+    this.createTable();
+  }
 
 	openDatabase () {
 		return this.db.openDatabase({

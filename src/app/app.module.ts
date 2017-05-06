@@ -1,11 +1,8 @@
-import { NgModule, ErrorHandler/*, Component*/ } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-//Refactor
-//import { AboutPage } from '../pages/about/about';
-//import { ContactPage } from '../pages/contact/contact';
 import { NotificationPage } from '../pages/notification/notification';
 import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
@@ -29,20 +26,9 @@ var links = [
   { component: ShowNotificationPage, name:'notification', segment:'notification/:id' },
 ];
 
-//import { Observable } from 'rxjs/Observable';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
-//Importamos libreria de firebase para angular 2
-//import { AngularFireAuth } from 'angularfire2/auth';
-//import firebase from 'firebase';
-//import { AngularFireDatabase } from 'angularfire2/database';
-
-//import { SQLite } from '@ionic-native/sqlite';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 
 export const CONFIG = {
@@ -53,14 +39,9 @@ export const CONFIG = {
    storageBucket: "platzitter-70b91.appspot.com",
    messagingSenderId: "639016230348"  
 };
-
-import * as firebase from 'firebase/app';
-
 @NgModule({
   declarations: [
     MyApp,
-    //AboutPage,
-    //ContactPage,
     NotificationPage,
     ProfilePage,
     HomePage,
@@ -73,44 +54,26 @@ import * as firebase from 'firebase/app';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, links),
-    //Observable,
-    AngularFireModule,
-    AngularFireDatabaseModule,
-    AngularFireDatabase,
-    FirebaseListObservable,
-    AngularFireAuth,
-    AngularFireAuthModule,
     AngularFireModule.initializeApp(CONFIG),
-  ],
-  exports: [
-    AngularFireModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    //AboutPage,
-    //ContactPage,
     NotificationPage,
     ProfilePage,
+    LoginPage,
     HomePage,
     TabsPage,
-    LoginPage,
     ShowNotificationPage,
     Fav,
     SignInPage
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    Splashscreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService, DBService,//, SQLite
-    //Observable,
-    AngularFireModule,
-    AngularFireDatabaseModule,
-    AngularFireDatabase,
-    FirebaseListObservable,
-    AngularFireAuth,
-    AngularFireAuthModule,
+    UserService, 
+    DBService
   ]
 })
 export class AppModule {}

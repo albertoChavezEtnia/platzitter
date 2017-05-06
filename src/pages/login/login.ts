@@ -18,12 +18,12 @@ Un CSS (en este caso scss)
 //Es por eso que importamos 'Component' , que viene de @angular/core
 import { Component } from '@angular/core';
 //Cada uno de los componentes tendran Notation parecidas
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 //Importamos 2 componentes nuevos o 2 funcionalidades nuevas, una alerta y un loading que ya pertenece a ionic
-import { AlertController, LoadingController, NavController } from 'ionic-angular';
+
 import { SignInPage } from './signin';
 import { UserService } from '../../services/user.service';
-import { DBService } from '../../services/db.service';
 
 //Notation importada
 //El selector es el nombre con el cual el componente será llamado en el html
@@ -40,11 +40,12 @@ export class LoginPage{
 	 	public  	loadingCtrl: LoadingController,
 	 	public	navCtrl: NavController,
 	 	private 	userService: UserService, 
-	 	private 	DBService: DBService,
  	){
+ 		/*
 		DBService.openDatabase();
 		DBService.createTable();
 		console.dir(DBService.getAll());
+		*/
  	}
 
  	//Propio de angular
@@ -54,7 +55,7 @@ export class LoginPage{
 
  	login = ():void=>{
 
-		if(this.user.email != '' && this.user.password != ''){
+        	if (this.user.email != "" && this.user.password != ""){
 
 			let usuarios;
 

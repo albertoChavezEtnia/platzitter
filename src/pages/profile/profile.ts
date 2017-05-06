@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Notifications } from '../../commons/notifications';
+//import { Notifications } from '../../commons/notification';
 import { Twitt } from '../../commons/twitt';
 import { Profile } from '../../commons/profile';
 
@@ -12,8 +12,8 @@ import { Profile } from '../../commons/profile';
 })
 export class ProfilePage {
 
-  me:Profile = {
-    "img":'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg',
+  profile:Profile = {
+    "img":'https://pbs.twimg.com/profile_images/807699331633598464/A_9pIQ6d.jpg',
      nick_name:'@jorgeucano',
     "interactions":1,
     "github": "jorgeucano",
@@ -33,15 +33,15 @@ export class ProfilePage {
     {img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'},
     {img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'}
   ];
-
+/*
   notifications:Array<Notifications> = [
     {action: 'reply', img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@freddier', text:'platzitter es lo mas'},
     {action: 'replatzitt', img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@cvander', text:'que chulo que esta esta app en iOS'},
     {action: 'mention', img:'https://pbs.twimg.com/profile_images/703539825853464577/jppQNmXD_400x400.jpg', nick_name:'@jorgeucano', text:'test 1234'}
   ];
-
+*/
   constructor(public navCtrl: NavController) {
-    this.me.interactions = this.listado.length;
+    this.profile.interactions = this.listado.length;
   }
 
 }

@@ -8,11 +8,12 @@
 
 <ion-content padding>
 
-	<ion-list *ngFor="let item of notifications">
-	  <ion-item>
+	<ion-list>
+	  <ion-item *ngFor="let item of notifications">
 	    <ion-thumbnail item-left>
 	      <img src="{{item.img}}">
 	    </ion-thumbnail>
+      <h5>{{item.action}}</h5>
 	    <h2>{{item.nick_name}}</h2>
 	    <p>{{item.text}}</p>
 	    <button (tap)="showNotification(item)" ion-button clear item-right>View</button>

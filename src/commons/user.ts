@@ -1,6 +1,6 @@
-export interface User{
-	nick_name:string;
-   full_name:string; 
-   email:string;
-   password:string;
+export class User{
+    full_name:string;
+    nick_name:string;
+    email:string;
+    password:string;
 }

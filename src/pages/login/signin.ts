@@ -4,7 +4,7 @@ import { DBService } from '../../services/db.service';
 import { TabsPage } from '../tabs/tabs';
 @Component({
   selector: 'page-signin',
-  template: `n
+  template: `
     <img src="https://static.platzi.com/media/achievements/Badge-Ionic_1.png" />
     <h1>Login</h1>
     <ion-item>

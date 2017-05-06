@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2';
 
 @Component({
 	selector:'fav',
@@ -9,23 +11,40 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 //En las clases de los componentes las variables y funciones/metodos no se les agrega prefijo de "qué es lo que se declara"
 export class Fav {
-	@Input() id:number;
+	@Input() key:string;
+	@Input() cantidad:number;
 	@Output() onFav = new EventEmitter<string>();
 
-	test = '';
-	icon = 'ios-heart-outline';
+	listado: FirebaseListObservable<any>;
+  
+
+	constructor(public database: AngularFireDatabase) {
+		this.listado = this.database.list('/twitts/');
+	}
+	test = "";
+	icon = "ios-heart-outline";
 
 	alerta(){
-		if(this.test == ''){
-			this.test = 'primary';
-			this.icon = 'ios-heart';			
-			this.onFav.emit('Gracias por hacer fav');
-		}else{
-			this.test = '';
-			this.icon = 'ios-heart-outline';			
+	      	if (this.test == ""){
+			//obtener el valor inicial
+			let cant:number = parseInt(this.cantidad) + 1;
+        
+			this.listado.update(this.key, {
+				fav : cant
+			});
+			this.test = "primary";
+			this.icon = "ios-heart";
 		}
-		
-		//alert(this.id);
+		else{
+			//obtener el valor inicial
+			let cant:number = parseInt(this.cantidad) - 1;
+        
+			this.listado.update(this.key, {
+				fav : cant
+			});
+			this.test = "";
+			this.icon = "ios-heart-outline";
+		}
+		this.onFav.emit("gracias por hacer fav");
 	}
-
 }
