@@ -16,25 +16,33 @@ Un CSS (en este caso scss)
 //Este archivo contendrá toda la funcionalidad de nuestro componente
 //Una Notation, es un agregado de funcionalidades que se crea y se genera para nuestros tags
 //Es por eso que importamos 'Component' , que viene de @angular/core
-import { Component } from '@angular/core';
 //Cada uno de los componentes tendran Notation parecidas
-import { AlertController, LoadingController, NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 //Importamos 2 componentes nuevos o 2 funcionalidades nuevas, una alerta y un loading que ya pertenece a ionic
 
+/* Core Imports */
+import { Component } from '@angular/core';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+
+/* Page Imports */
 import { SignInPage } from './signin';
+
+/* Service Imports */
 import { UserService } from '../../services/user.service';
 
 //Notation importada
 //El selector es el nombre con el cual el componente será llamado en el html
+
+/* Declaración del componente y sus dependencias */
 @Component({
 	selector: 'page-login',
 	templateUrl: 'login.html',
 })
 
+/* Clase exportable */
 export class LoginPage{
 	user = {"email":"","password":""};
-	//constructor va a generar todo lo necesario
+	//constructor va a generar todo lo necesario, instancias antes de ejecutar lo demás
 	constructor(
 		private 	alertCtrl: AlertController,
 	 	public  	loadingCtrl: LoadingController,
@@ -48,11 +56,11 @@ export class LoginPage{
 		*/
  	}
 
- 	//Propio de angular
+ 	/* Propio de angular, nos sirve para realizar cosas cuando inicia angular*/
  	ngOnInit(){
  		console.log('Arrancó el init');
  	}
-
+ 	/* Esto se lee : login va a ser igual a funcion (arrow function) que retorna vacío */
  	login = ():void=>{
 
         	if (this.user.email != "" && this.user.password != ""){

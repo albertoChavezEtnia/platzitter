@@ -1,47 +1,42 @@
-
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>Home</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
+	<ion-list>
+		<ion-item *ngFor="let item of listado | async">
 
-  <ion-list>
+			<ion-avatar item-left>
+				<img src="{{item.img}}">
+			</ion-avatar>
 
-    <ion-item *ngFor="let item of listado | async">
+			<h2 ion-text color="secondary">{{item.nick_name}}</h2>
+			<h3>{{item.text}}</h3>
 
-      <ion-avatar item-left>
-        <img src="{{item.img}}">
-      </ion-avatar>
+			<ion-grid>
+				<ion-row>
+					<ion-col width-33>
+						<!-- Deprecated: created component fav -->
+						<!-- <ion-icon name="heart-outline"></ion-icon> -->
+						<fav key="{{item.$key}}" cantidad="{{item.fav}}" (onFav)="onFav($event)"></fav>
+						{{item.fav}}
+					</ion-col>
 
-      <h2 color="secondary">{{item.nick_name}}</h2>
-      <h3>{{item.text}}</h3>
-      <ion-grid>
-        <ion-row>
-		      <ion-col width-33>
-            <!-- Deprecated: created component fav -->
-            <!-- <ion-icon name="heart-outline"></ion-icon> -->
-            <fav key="{{item.$key}}" cantidad="{{item.fav}}" (onFav)="onFav($event)">
-              
-            </fav>
-            {{item.fav}}
-          </ion-col>
+					<ion-col width-33>
+						<ion-icon name="share-alt" ion-text color="replatzit"></ion-icon>
+					</ion-col>
 
-          <ion-col width-33>
-            <ion-icon name="share-alt" color="replatzit"></ion-icon>
-          </ion-col>
+					<ion-col width-33>
+						<ion-icon name="repeat" tap="verTodo(item)"></ion-icon>
+					</ion-col>
+				 
+				</ion-row>
+			</ion-grid>
 
-          <ion-col width-33>
-            <ion-icon name="repeat" tap="verTodo(item)"></ion-icon>
-          </ion-col>
-          
-        </ion-row>
-      </ion-grid>
-
-    </ion-item>
-  </ion-list>
-
+		</ion-item>
+	</ion-list>
 </ion-content>
 
 
@@ -49,11 +44,11 @@
 <!-- 
   <h2>Welcome to Ionic!</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+	 This starter project comes with simple tabs-based layout for apps
+	 that are going to primarily use a Tabbed UI.
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+	 Take a look at the <code>src/pages/</code> directory to add or change tabs,
+	 update any existing page or create new pages.
   </p>
 -->

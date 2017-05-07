@@ -1,10 +1,12 @@
+/* Core Imports */
 import { Injectable } from '@angular/core';
-
-//import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
 import { SQLite } from 'ionic-native'; //,SQLiteObject 
+//import { SQLite } from '@ionic-native/sqlite'; //,SQLiteObject 
 
+/* Declaración de Servicio Injectable para Inyección de Dependencias */
 @Injectable()
 
+/* Declaración de Clase Exportable */
 export class DBService {
 	//db: SQLite = null;
 	db = null;
